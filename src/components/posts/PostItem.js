@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const PostItem = ({ data: { title, text, id, hasImage, imageUrl, createdBy, createdAt } }) => {
   return (
-    <div className="row">
+    <div className="col s12 l6">
       <div className="card">
         <div className="card-content">
           <Link to={`/post/${id}`} className="card-title">{title}</Link>

@@ -3,7 +3,7 @@ import './App.css';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import Feed from './components/pages/Feed';
+import Posts from './components/posts/Posts';
 import Login from './components/pages/Login';
 import Header from './components/layout/Header';
 
@@ -18,7 +18,7 @@ function App() {
         <Header />
         <div className="container main-content">
           <Switch>
-            <Route exact path="/" component={Feed} />
+            <Route exact path="/" component={Posts} />
             <Route exact path="/login" component={Login} />
           </Switch>
         </div>
