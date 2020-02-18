@@ -12,6 +12,7 @@
 /build
 
 # misc
+mockData
 .DS_Store
 .env.local
 .env.development.local
