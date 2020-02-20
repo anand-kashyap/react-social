@@ -1,0 +1,20 @@
+.cardTitle {
+  display: flex;
+  margin-bottom: 8px;
+  a {
+    font-size: 16px;
+  }
+  i {
+    padding-right: 5px;
+  }
+  .date {
+    margin-left: auto !important;
+    font-size: 12px;
+  }
+}
+
+.actions {
+  a {
+    color: #343434 !important;
+  }
+}
