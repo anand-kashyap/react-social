@@ -6,6 +6,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import Posts from './components/posts/Posts';
 import Login from './components/pages/Login';
 import Header from './components/layout/Header';
+import Post from './components/posts/Post';
 
 function App() {
   // init materialize js
@@ -19,6 +20,7 @@ function App() {
         <div className="container main-content">
           <Switch>
             <Route exact path="/" component={Posts} />
+            <Route exact path="/post/:id" component={Post} />
             <Route exact path="/login" component={Login} />
           </Switch>
         </div>
