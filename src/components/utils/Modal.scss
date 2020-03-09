@@ -1,0 +1,16 @@
+.modal.bottom-sheet {
+  margin: inherit;
+  width: inherit;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  .modal-content {
+    padding: 10px 24px;
+    textarea {
+      &:focus {
+        outline: thick;
+      }
+      height: 8rem;
+      resize: none;
+    }
+  }
+}
