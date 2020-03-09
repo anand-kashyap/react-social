@@ -1,13 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import { M } from './Shared';
 import './Modal.scss';
+import postContext from '../../context/post/postContext';
 const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1' }) => {
   let modalRef = useRef();
+  const { addNew } = useContext(postContext);
+  let text = ''; let create = false;
   const mainClass = bottom ? 'bottom-sheet' : null;
+  const Post = () => {
+    // if (create) {
+    // send
+    addNew(text, 'test_user');
+    // }
+    console.log('lcoguh')
+    // create = false;
+    text = '';
+  };
   if (!options) {
     options = {
       inDuration: 250,
       outDuration: 350,
+      onCloseStart: Post,
       opacity: 0.5,
       startingTop: "4%",
       endingTop: "10%"
@@ -18,6 +31,9 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1' }
     M.Modal.init(modalRef, options);
     // eslint-disable-next-line
   }, []);
+  const setContent = e => {
+    text = e.target.value;
+  }
 
   return (
     <div
@@ -28,15 +44,15 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1' }
       className={'modal ' + mainClass}
     >
       <div className="modal-content">
-        <h5>Create Post</h5>
-        <textarea placeholder="Share something..."></textarea>
+        <h5>Post</h5>
+        <textarea autoFocus placeholder="Share something..." onChange={setContent}></textarea>
       </div>
       <div className="modal-footer">
         <p className="modal-close waves-effect waves-red btn-flat">
           Cancel
         </p>
-        <p className="waves-effect waves-light btn red">
-          Create
+        <p onClick={Post} className="modal-close waves-effect waves-light btn red">
+          Post
         </p>
       </div>
     </div>

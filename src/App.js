@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -7,6 +7,7 @@ import Posts from './components/posts/Posts';
 import Login from './components/pages/Login';
 import Header from './components/layout/Header/Header';
 import Post from './components/posts/Post';
+import PostState from './context/post/postState';
 
 function App() {
   // init materialize js
@@ -14,7 +15,7 @@ function App() {
     M.AutoInit();
   }, [])
   return (
-    <Fragment>
+    <PostState>
       <Router>
         <Header />
         <div className="container main-content">
@@ -25,7 +26,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </Fragment>
+    </PostState>
   );
 }
 

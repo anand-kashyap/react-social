@@ -1,10 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, useContext } from 'react'
 import PostItem from './PostItem'
-import posts from '../../mockData/posts';
 import Modal from '../utils/Modal';
+import postContext from '../../context/post/postContext';
 
 const Posts = props => {
   const modalId = 'modal1';
+  const { posts } = useContext(postContext);
   const [scale, setScale] = useState('');
   useEffect(() => {
     setTimeout(() => {
