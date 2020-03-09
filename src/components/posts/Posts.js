@@ -1,14 +1,15 @@
 import React, { Fragment } from 'react'
 import PostItem from './PostItem'
 import posts from '../../mockData/posts';
+import Modal from '../utils/Modal';
 
 const Posts = props => {
   return (
     <Fragment>
+      <Modal bottom={true} />
       <div className="fixed-action-btn">
-        <button className="btn-floating btn-large red waves-effect waves-circle waves-light">
-          <i className="large material-icons-outlined">add</i>
-        </button>
+        <button data-target="modal1" className="btn-floating btn-large red waves-effect waves-circle waves-light modal-trigger">
+          <i className="large material-icons-outlined">add</i></button>
       </div>
       <div className="row">
         {posts.map(post => (
