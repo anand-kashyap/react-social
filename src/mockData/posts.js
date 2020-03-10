@@ -6,7 +6,7 @@ const posts = [
     "hasImage": false,
     "imageUrl": "",
     "createdBy": "anand_ak",
-    "createdAt": "2020-02-17"
+    "createdAt": "2020-02-14"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@ const posts = [
     "imageUrl": "",
     "hasImage": false,
     "createdBy": "arun",
-    "createdAt": "2020-02-16"
+    "createdAt": "2020-02-15"
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@ const posts = [
     "imageUrl": "",
     "hasImage": false,
     "createdBy": "tarun",
-    "createdAt": "2020-02-15"
+    "createdAt": "2020-02-16"
   },
   {
     "id": 4,
@@ -33,7 +33,7 @@ const posts = [
     "text": "lorem ipsum one six",
     "hasImage": false,
     "createdBy": "steve",
-    "createdAt": "2020-02-14"
+    "createdAt": "2020-02-17"
   }
 ]
 

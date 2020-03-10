@@ -4,8 +4,7 @@ export default (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case ADD_POST:
-      console.log([payload, ...state])
-      return [payload, ...state];
+      return [...state, payload];
     default:
       return state;
   }

@@ -20,7 +20,7 @@ const Posts = props => {
         <button data-target={modalId} className={`btn-floating btn-large red waves-effect waves-circle waves-light modal-trigger scale-transition scale-out ${scale}`}>
           <i className="large material-icons-outlined">add</i></button>
       </div>
-      <div className="row">
+      <div className="row flexed">
         {posts.map(post => (
           <PostItem key={post.id} data={post} />
         ))}

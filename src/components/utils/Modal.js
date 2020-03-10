@@ -1,20 +1,15 @@
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef, useContext, useState } from 'react';
 import { M } from './Shared';
 import './Modal.scss';
 import postContext from '../../context/post/postContext';
 const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1' }) => {
   let modalRef = useRef();
   const { addNew } = useContext(postContext);
-  let text = ''; let create = false;
+  const [text, setText] = useState('');
   const mainClass = bottom ? 'bottom-sheet' : null;
   const Post = () => {
-    // if (create) {
-    // send
     addNew(text, 'test_user');
-    // }
-    console.log('lcoguh')
-    // create = false;
-    text = '';
+    setText('');
   };
   if (!options) {
     options = {
@@ -32,7 +27,7 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1' }
     // eslint-disable-next-line
   }, []);
   const setContent = e => {
-    text = e.target.value;
+    setText(e.target.value);
   }
 
   return (
@@ -45,7 +40,7 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1' }
     >
       <div className="modal-content">
         <h5>Post</h5>
-        <textarea autoFocus placeholder="Share something..." onChange={setContent}></textarea>
+        <textarea autoFocus placeholder="Share something..." value={text} onChange={setContent}></textarea>
       </div>
       <div className="modal-footer">
         <p className="modal-close waves-effect waves-red btn-flat">
