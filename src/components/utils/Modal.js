@@ -4,6 +4,7 @@ import './Modal.scss';
 import postContext from '../../context/post/postContext';
 const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1' }) => {
   let modalRef = useRef();
+  let textRef = useRef();
   const { addNew } = useContext(postContext);
   const [text, setText] = useState('');
   const mainClass = bottom ? 'bottom-sheet' : null;
@@ -24,6 +25,11 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1' }
   options.dismissible = dismiss;
   useEffect(() => {
     M.Modal.init(modalRef, options);
+    setTimeout(() => {
+      textRef.current.focus();
+      console.log(textRef.current);
+
+    }, 100);
     // eslint-disable-next-line
   }, []);
   const setContent = e => {
@@ -40,7 +46,7 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1' }
     >
       <div className="modal-content">
         <h5>Post</h5>
-        <textarea autoFocus placeholder="Share something..." value={text} onChange={setContent}></textarea>
+        <textarea autoFocus ref={textRef} placeholder="Share something..." value={text} onChange={setContent}></textarea>
       </div>
       <div className="modal-footer">
         <p className="modal-close waves-effect waves-red btn-flat">
