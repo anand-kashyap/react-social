@@ -8,13 +8,16 @@
   .item-enter {
     opacity: 0;
     background-color: #ccf9ff;
-    transform: scale(0.9);
+    transform: scale(1.1);
   }
   .item-enter-active {
     opacity: 1;
     transform: translateX(0);
-    background-color: unset;
-    transition: background-color 6000ms, opacity 400ms, transform 400ms;
+    transition: opacity 0.3s, transform 0.4s;
+  }
+  .item-enter-done {
+    background-color: #fff;
+    transition: background-color 3s ease-out 0.5s;
   }
   .item-exit {
     opacity: 1;
