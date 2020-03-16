@@ -4,11 +4,16 @@ import PostContext from './postContext';
 import PostReducer from './postReducer';
 import posts from '../../mockData/posts';
 
-import { ADD_POST } from '../types';
+import { ADD_POST, NEW_POSTS } from '../types';
 const PostState = props => {
-  const initialState = posts;
+  const initialState = []; // will be replaced by api call
 
   const [state, dispatch] = useReducer(PostReducer, initialState);
+
+  const fetchNewPosts = () => {
+    // todo: make api call
+    dispatch({ payload: posts, type: NEW_POSTS });
+  };
 
   const addNew = (text, createdBy) => {
     const d = new Date();
@@ -21,7 +26,7 @@ const PostState = props => {
     dispatch({ payload: { id, text, createdBy, createdAt }, type: ADD_POST });
   };
 
-  return <PostContext.Provider value={{ posts: state, addNew }}>
+  return <PostContext.Provider value={{ posts: state, addNew, fetchNewPosts }}>
     {props.children}
   </PostContext.Provider>
 }

@@ -8758,6 +8758,11 @@ react-scripts@3.4.0:
   optionalDependencies:
     fsevents "2.1.2"
 
+react-simple-pull-to-refresh@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-simple-pull-to-refresh/-/react-simple-pull-to-refresh-1.1.2.tgz#698bf08a27b88a75db7ecd09fc500178d277ab50"
+  integrity sha512-NlTyemCFSoIM0/qQs+WYDvUF+7Uc86rOVM2hCIws8m+wWgPIEzilv1BcYm0XkN23emucIbZKdlPYfYwlciRyRQ==
+
 react-transition-group@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.3.0.tgz#fea832e386cf8796c58b61874a3319704f5ce683"

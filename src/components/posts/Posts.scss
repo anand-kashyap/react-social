@@ -1,0 +1,14 @@
+.loader {
+  .cont {
+    text-align: center;
+    p {
+      margin: 0;
+    }
+    .down {
+      transform: rotate(135deg);
+    }
+    .up {
+      transform: rotate(-45deg);
+    }
+  }
+}
