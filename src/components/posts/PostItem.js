@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
 
-import { cardTitle, date, actions } from './PostItem.module.scss';
+import { cardTitle, date, actions, textCont } from './PostItem.module.scss';
 const PostItem = ({ data: { title, text, id, hasImage, imageUrl, createdBy, createdAt } }) => {
   const formatDate = (dtStr) => {
     const d = new Date(dtStr);
@@ -22,7 +22,7 @@ const PostItem = ({ data: { title, text, id, hasImage, imageUrl, createdBy, crea
           <Link to={`/user/${createdBy}`}>{createdBy}</Link>
           <p className={date}>{formatDate(createdAt)}</p>
         </div>
-        <p>{text}</p>
+        <p className={textCont}>{text}</p>
       </div>
       <div className={actions + " card-action"}>
         <button className="waves-effect btn-flat">Like</button>

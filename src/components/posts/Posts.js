@@ -17,9 +17,13 @@ const Posts = props => {
     }, 650);
   }, []);
 
+  const modalClosed = () => {
+    setOpened(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <Fragment>
-      <Modal bottom={true} id={modalId} opened={opened} closed={() => setOpened(false)} />
+      <Modal bottom={true} id={modalId} opened={opened} closed={modalClosed} />
       <div className="fixed-action-btn">
         <button onClick={() => { setOpened(true); }} data-target={modalId} className={`btn-floating btn-large red waves-effect waves-circle waves-light modal-trigger scale-transition scale-out ${scale}`}>
           <i className="large material-icons-outlined">add</i></button>
