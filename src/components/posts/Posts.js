@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect, useContext } from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PostItem from './PostItem';
-
+import { M } from '../utils/Shared';
 import Modal from '../utils/Modal';
 import postContext from '../../context/post/postContext';
 
@@ -12,14 +12,22 @@ const Posts = props => {
   const [scale, setScale] = useState('');
   const [opened, setOpened] = useState(false);
   useEffect(() => {
+    document.querySelector('.toast-action');
     setTimeout(() => {
       setScale('scale-in');
     }, 650);
   }, []);
 
+  const viewNew = e => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   const modalClosed = () => {
     setOpened(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.scrollY !== 0) {
+      M.toast({ classes: 'created-toast', html: '<span>Post created!</span><button class="btn-flat toast-action">View</button>' });
+      const toastbtns = document.querySelectorAll('.toast-action');
+      toastbtns.forEach((val) => val.addEventListener('click', viewNew));
+    }
   };
   return (
     <Fragment>

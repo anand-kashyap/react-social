@@ -57,14 +57,12 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
 
   return (
     <div
-      ref={Modal => {
-        modalRef = Modal;
-      }}
+      ref={Modal => modalRef = Modal}
       id={id}
       className={'modal ' + mainClass}
     >
       <div className="modal-content">
-        <h5>Post</h5>
+        <h5>Create Post</h5>
         <textarea onKeyDown={textboxKeyPress} ref={tref => tref && opened ? tref.focus() : null} placeholder="Share something..." value={text} onChange={setContent}></textarea>
       </div>
       <div className="modal-footer">

@@ -4,6 +4,11 @@
 - register
 - forgot password
 
+# settings
+
+- accent color select
+- theme
+
 # main
 
 ## post feed [container]
