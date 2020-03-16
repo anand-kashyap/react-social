@@ -42,7 +42,7 @@ const Posts = props => {
         <button onClick={() => { setOpened(true); }} data-target={modalId} className={`btn-floating btn-large red waves-effect waves-circle waves-light modal-trigger scale-transition scale-out ${scale}`}>
           <i className="large material-icons-outlined">add</i></button>
       </div>
-      <PullToRefresh pullDownThreshold={100} maxPullDownDistance={120} onRefresh={() => onInit(true)} pullingContent={
+      <PullToRefresh isPullable={window.screen.width <= 600} pullDownThreshold={100} maxPullDownDistance={120} onRefresh={() => onInit(true)} pullingContent={
         <div className="cont">
           <i className="small material-icons-outlined down">call_made</i>
           <p>Pull to refresh</p>
