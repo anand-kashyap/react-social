@@ -5,10 +5,12 @@ import postContext from '../../context/post/postContext';
 const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', opened = false, closed }) => {
   let modalRef = useRef();
   let isMobile = useRef(false);
+  let save = useRef(false);
   const { addNew } = useContext(postContext);
   const [text, setText] = useState('');
   const mainClass = bottom ? 'bottom-sheet' : null;
   const Post = () => {
+    save.current = true;
     addNew(text, 'test_user');
     setText('');
   };
@@ -17,7 +19,9 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
       inDuration: 250,
       outDuration: 350,
       onCloseEnd() {
-        closed();
+        console.log('text', save.current);
+        closed(save.current);
+        save.current = false;
         // console.log('close End');
       },
       opacity: 0.5,

@@ -32,7 +32,7 @@ const posts = [
     "title": "Test Post 4",
     "text": "lorem ipsum one six",
     "hasImage": false,
-    "createdBy": "steve",
+    "createdBy": "bruce",
     "createdAt": "2020-02-17"
   }
 ]

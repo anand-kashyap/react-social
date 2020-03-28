@@ -14,10 +14,12 @@ const Posts = props => {
   const [scale, setScale] = useState('');
   const [opened, setOpened] = useState(false);
   const onInit = (pull = false) => {
-    setScale('');
-    setTimeout(() => {
-      setScale('scale-in');
-    }, 650);
+    if (!pull) {
+      setScale('');
+      setTimeout(() => {
+        setScale('scale-in');
+      }, 650);
+    }
     fetchNewPosts();
   }
   useEffect(onInit, []);
@@ -26,9 +28,10 @@ const Posts = props => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     toast.dismiss();
   }
-  const modalClosed = () => {
+  const modalClosed = (posted) => {
     setOpened(false);
-    if (window.scrollY !== 0) {
+    // console.log('text', text);
+    if (window.scrollY !== 0 && posted) {
       const ins = M.toast({ classes: 'created-toast', html: '<span>Post created!</span><button class="btn-flat toast-action">View</button>' });
       const toastbtns = document.querySelectorAll('.toast-action');
       const tbtn = toastbtns[toastbtns.length - 1]; // last added

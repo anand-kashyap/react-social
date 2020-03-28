@@ -12,6 +12,7 @@ const PostState = props => {
 
   const fetchNewPosts = () => {
     // todo: make api call
+    console.log('newposts');
     dispatch({ payload: posts, type: NEW_POSTS });
   };
 
