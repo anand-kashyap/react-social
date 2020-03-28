@@ -39,10 +39,15 @@
   }
   .item-exit {
     opacity: 1;
+    background-color: red;
+    * {
+      visibility: hidden;
+    }
   }
   .item-exit-active {
     opacity: 0;
-    transition: opacity 1500ms ease-in;
+    transform: scaleY(0);
+    transition: transform 400ms, opacity 400ms;
   }
 }
 
