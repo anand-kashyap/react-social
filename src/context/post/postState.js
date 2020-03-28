@@ -4,7 +4,7 @@ import PostContext from './postContext';
 import PostReducer from './postReducer';
 import posts from '../../mockData/posts';
 
-import { ADD_POST, NEW_POSTS } from '../types';
+import { ADD_POST, NEW_POSTS, DELETE_POST } from '../types';
 const PostState = props => {
   const initialState = []; // will be replaced by api call
 
@@ -27,7 +27,12 @@ const PostState = props => {
     dispatch({ payload: { id, text, createdBy, createdAt }, type: ADD_POST });
   };
 
-  return <PostContext.Provider value={{ posts: state, addNew, fetchNewPosts }}>
+  const deletePost = (post) => {
+    // todo add api call to delete
+    dispatch({ payload: post, type: DELETE_POST })
+  }
+
+  return <PostContext.Provider value={{ posts: state, addNew, fetchNewPosts, deletePost }}>
     {props.children}
   </PostContext.Provider>
 }

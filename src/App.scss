@@ -5,6 +5,24 @@
 .flexed {
   display: flex;
   flex-direction: column-reverse;
+  .card {
+    .more-details {
+      position: absolute;
+      right: 0;
+      padding: 2px;
+    }
+    .dropdown-content .drop-item {
+      background: transparent;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+      text-align: left;
+      span {
+        vertical-align: super;
+      }
+    }
+  }
   .item-enter {
     opacity: 0;
     background-color: #ccf9ff;

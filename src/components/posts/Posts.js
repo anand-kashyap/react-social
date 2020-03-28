@@ -10,7 +10,7 @@ import postContext from '../../context/post/postContext';
 
 const Posts = props => {
   const modalId = 'modal1';
-  const { posts, fetchNewPosts } = useContext(postContext);
+  const { posts, fetchNewPosts, deletePost } = useContext(postContext);
   const [scale, setScale] = useState('');
   const [opened, setOpened] = useState(false);
   const onInit = (pull = false) => {
@@ -30,7 +30,6 @@ const Posts = props => {
   }
   const modalClosed = (posted) => {
     setOpened(false);
-    // console.log('text', text);
     if (window.scrollY !== 0 && posted) {
       const ins = M.toast({ classes: 'created-toast', html: '<span>Post created!</span><button class="btn-flat toast-action">View</button>' });
       const toastbtns = document.querySelectorAll('.toast-action');
@@ -38,6 +37,13 @@ const Posts = props => {
       tbtn.addEventListener('click', () => viewNew(ins));
     }
   };
+
+  const onDropSel = (optionName, post) => {
+    console.log('onDropSel -> post', post, optionName);
+    if (optionName === 'delete') {
+      deletePost(post);
+    }
+  }
   return (
     <Fragment>
       <Modal bottom={true} id={modalId} opened={opened} closed={modalClosed} />
@@ -64,7 +70,7 @@ const Posts = props => {
               key={post.id}
               timeout={500}
               classNames={scale && 'item'}>
-              <PostItem key={post.id} data={post} />
+              <PostItem key={post.id} data={post} selectedDrop={(v) => onDropSel(v, post)} />
             </CSSTransition>
           ))}
         </TransitionGroup>}
