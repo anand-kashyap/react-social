@@ -18,7 +18,7 @@ const PostState = props => {
 
   const addNew = (text, createdBy) => {
     const d = new Date();
-    const id = state[state.length - 1].id + 1;
+    const id = state.length > 0 ? state[state.length - 1].id + 1 : 1;
     const createdAt = new Intl.DateTimeFormat('en-GB', {
       year: 'numeric',
       month: 'long',

@@ -26,7 +26,7 @@ const PostItem = ({ data: { title, text, id, hasImage, imageUrl, createdBy, crea
     // <div className="col s12">
     <div className="card hoverable">
       <button ref={bref => dropbRef = bref} className="dropdown-trigger btn-flat more-details" data-target={'dropdown' + id}>
-        <i className="material-icons-outlined">more_vert</i>
+        <i className="material-icons-outlined">more_horiz</i>
       </button>
       <ul id={'dropdown' + id} className='dropdown-content'>
         {dropOpts.map(({ val, icon }) => (
