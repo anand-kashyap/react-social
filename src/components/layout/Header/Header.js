@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom';
 
-import { navWrapper, heading } from './Header.module.scss';
+import './Header.scss';
 const Header = () => {
+  let Nref = useRef();
+  useEffect(() => {
+    setTimeout(() => {
+      Nref.setAttribute('data-theme', 'dark')
+    }, 2000);
+  }, [])
+
   return (
-    <nav>
-      <div className={navWrapper}>
-        <Link to="/" className={heading}>SnappyLog</Link>
+    <nav ref={nref => Nref = nref}>
+      <div className="nav-wrapper">
+        <Link to="/" className="heading">SnappyLog</Link>
         <ul id="nav-mobile" className="right">
           <li>
             <Link to="/login" >Login</Link>
