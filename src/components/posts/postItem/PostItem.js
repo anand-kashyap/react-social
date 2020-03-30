@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
-import { M } from '../utils/Shared';
+import { M } from '../../utils/Shared';
 
 import { cardTitle, date, actions, textCont } from './PostItem.module.scss';
 const PostItem = ({ data: { title, text, id, hasImage, imageUrl, createdBy, createdAt }, selectedDrop }) => {

@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect, useContext } from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PullToRefresh from 'react-simple-pull-to-refresh';
-import PostItem from './PostItem';
+import PostItem from './postItem/PostItem';
 import './Posts.scss'
 import { M } from '../utils/Shared';
 import Modal from '../utils/Modal';
@@ -70,7 +70,7 @@ const Posts = props => {
               key={post.id}
               timeout={500}
               classNames={scale && 'item'}>
-              <PostItem key={post.id} data={post} selectedDrop={(v) => onDropSel(v, post)} />
+              <PostItem key={post.id} data={post} selectedDrop={v => onDropSel(v, post)} />
             </CSSTransition>
           ))}
         </TransitionGroup>}

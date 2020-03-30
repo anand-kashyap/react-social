@@ -4,13 +4,13 @@ import './Modal.scss';
 import postContext from '../../context/post/postContext';
 const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', opened = false, closed }) => {
   let modalRef = useRef();
-  let isMobile = useRef(false);
-  let save = useRef(false);
-  const { addNew } = useContext(postContext);
-  const [text, setText] = useState('');
-  const mainClass = bottom ? 'bottom-sheet' : null;
+  const [isMobile, setMobile] = useState(false),
+    [isSaved, setSaved] = useState(false),
+    { addNew } = useContext(postContext),
+    [text, setText] = useState(''),
+    mainClass = bottom ? 'bottom-sheet' : null;
   const Post = () => {
-    save.current = true;
+    setSaved(true);
     addNew(text, 'test_user');
     setText('');
   };
@@ -19,9 +19,9 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
       inDuration: 250,
       outDuration: 350,
       onCloseEnd() {
-        console.log('text', save.current);
-        closed(save.current);
-        save.current = false;
+        console.log('text', isSaved);
+        closed(isSaved);
+        setSaved(false);
         // console.log('close End');
       },
       opacity: 0.5,
@@ -32,7 +32,7 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
   options.dismissible = dismiss;
   useEffect(() => {
     M.Modal.init(modalRef, options);
-    isMobile.current = window.screen.width <= 600;
+    setMobile(window.screen.width <= 600);
     // eslint-disable-next-line
   }, []);
   const setContent = e => {
@@ -40,8 +40,8 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
   }
 
   const textboxKeyPress = (e) => {
-    isMobile.current = window.screen.width <= 600;
-    if (isMobile.current) {
+    setMobile(window.screen.width <= 600);
+    if (isMobile) {
       return;
     }
     const { keyCode: key, ctrlKey, shiftKey } = e;
@@ -70,8 +70,8 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
         <textarea onKeyDown={textboxKeyPress} ref={tref => tref && opened ? tref.focus() : null} placeholder="Share something..." value={text} onChange={setContent}></textarea>
       </div>
       <div className="modal-footer">
-        {!isMobile.current && <span><strong>Return</strong> to send. <strong>Shift + return</strong> to add new line</span>}
-        <p className="modal-close waves-effect waves-red btn-flat">
+        {!isMobile && <span><strong>Return</strong> to send. <strong>Shift + return</strong> to add new line</span>}
+        <p onClick={() => setText('')} className="modal-close waves-effect waves-red btn-flat">
           Cancel
         </p>
         <p onClick={Post} className="modal-close waves-effect waves-light btn red">
