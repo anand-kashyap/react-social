@@ -3,14 +3,14 @@ import { M } from '../Shared';
 import './Modal.scss';
 import postContext from '../../../context/post/postContext';
 const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', opened = false, closed }) => {
-  let modalRef = useRef();
+  let modalRef = useRef(),
+    isSaved = useRef(false);
   const [isMobile, setMobile] = useState(false),
-    [isSaved, setSaved] = useState(false),
     { addNew } = useContext(postContext),
     [text, setText] = useState(''),
     mainClass = bottom ? 'bottom-sheet' : null;
   const Post = () => {
-    setSaved(true);
+    isSaved.current = true;
     addNew(text, 'test_user');
     setText('');
   };
@@ -19,9 +19,8 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
       inDuration: 250,
       outDuration: 350,
       onCloseEnd() {
-        console.log('text', isSaved);
-        closed(isSaved);
-        setSaved(false);
+        closed(isSaved.current)
+        isSaved.current = false;
         // console.log('close End');
       },
       opacity: 0.5,
@@ -33,6 +32,7 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
   useEffect(() => {
     M.Modal.init(modalRef, options);
     setMobile(window.screen.width <= 600);
+    return () => console.log('ran');
     // eslint-disable-next-line
   }, []);
   const setContent = e => {
