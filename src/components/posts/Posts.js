@@ -5,14 +5,14 @@ import PullToRefresh from 'react-simple-pull-to-refresh';
 import PostItem from './postItem/PostItem';
 import './Posts.scss'
 import { M } from '../utils/Shared';
-import Modal from '../utils/Modal';
+import Modal from '../utils/modal/Modal';
 import postContext from '../../context/post/postContext';
 
 const Posts = props => {
-  const modalId = 'modal1';
-  const { posts, fetchNewPosts, deletePost } = useContext(postContext);
-  const [scale, setScale] = useState('');
-  const [opened, setOpened] = useState(false);
+  const modalId = 'modal1',
+    { posts, fetchNewPosts, deletePost } = useContext(postContext),
+    [scale, setScale] = useState(''),
+    [opened, setOpened] = useState(false);
   const onInit = (pull = false) => {
     if (!pull) {
       setScale('');
@@ -65,7 +65,7 @@ const Posts = props => {
         className="loader"
       >
         {<TransitionGroup className="row flexed">
-          {posts.map((post) => (
+          {posts.map(post => (
             <CSSTransition
               key={post.id}
               timeout={500}
