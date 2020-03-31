@@ -1,5 +1,10 @@
+@import '../../../assets/themes/variables';
+
 nav {
   background-color: var(--base-color);
+  a {
+    color: var(--content-color);
+  }
   .nav-wrapper {
     padding: 0 15px;
     .heading {
@@ -8,6 +13,21 @@ nav {
       display: inline-block;
       font-size: 2.1rem;
       padding: 0;
+    }
+    .dark-mode {
+      button {
+        height: 64px;
+        line-height: 64px;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+        i {
+          transform: rotate(45deg);
+          color: var(--content-color);
+          line-height: inherit;
+          height: inherit;
+        }
+      }
     }
   }
 }

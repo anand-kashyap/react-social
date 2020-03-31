@@ -1,27 +1,37 @@
-@import './assets/themes/variables';
-
 .main-content {
   margin-top: 10px !important;
 }
 
 .flexed {
   display: flex;
+  padding: 0 10px;
   flex-direction: column-reverse;
   .card {
+    background-color: var(--content-color);
     .more-details {
       position: absolute;
       right: 3px;
       padding: 2px;
     }
-    .dropdown-content .drop-item {
-      background: transparent;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      cursor: pointer;
-      text-align: left;
-      span {
-        vertical-align: super;
+    .dropdown-content {
+      background-color: var(--content-color);
+      li {
+        background-color: var(--base-color2);
+        filter: brightness(1.45);
+        &:hover {
+          filter: brightness(1.25);
+        }
+      }
+      .drop-item {
+        background: transparent;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        text-align: left;
+        span {
+          vertical-align: super;
+        }
       }
     }
   }
@@ -36,7 +46,7 @@
     transition: opacity 0.3s, transform 0.4s;
   }
   .item-enter-done {
-    background-color: #fff;
+    background-color: var(--content-color);
     transition: background-color 2s ease 1s;
   }
   .item-exit {

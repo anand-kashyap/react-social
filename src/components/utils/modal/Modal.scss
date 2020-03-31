@@ -3,6 +3,7 @@
   width: inherit;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  background-color: var(--base-color2);
   .modal-content {
     padding: 10px 24px;
     padding-bottom: 0;
@@ -18,6 +19,7 @@
     }
   }
   .modal-footer {
+    background-color: var(--base-color2);
     span {
       font-size: 10px;
       strong {

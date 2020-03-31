@@ -48,8 +48,8 @@ const Posts = props => {
     <Fragment>
       <Modal bottom={true} id={modalId} opened={opened} closed={modalClosed} />
       <div className="fixed-action-btn">
-        <button onClick={() => { setOpened(true); }} data-target={modalId} className={`btn-floating btn-large red waves-effect waves-circle waves-light modal-trigger scale-transition scale-out ${scale}`}>
-          <i className="large material-icons-outlined">add</i></button>
+        <button onClick={() => { setOpened(true); }} data-target={modalId} className={`btn-floating btn-large waves-effect waves-circle waves-light modal-trigger scale-transition scale-out post-float ${scale}`}>
+          <i className="custom-mid material-icons-outlined">add</i></button>
       </div>
       <PullToRefresh isPullable={window.screen.width <= 600} pullDownThreshold={100} maxPullDownDistance={120} onRefresh={() => onInit(true)} pullingContent={
         <div className="cont">
