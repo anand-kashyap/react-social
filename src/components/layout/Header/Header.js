@@ -22,7 +22,7 @@ const Header = () => {
         <ul id="nav-mobile" className="right">
           <li className="dark-mode">
             <button className="btn btn-small waves-effect btn-flat" onClick={() => setDarkMode(!darkMode)}>
-              <i className="material-icons-outlined">{darkMode ? 'brightness_2' : 'wb_sunny'}</i>
+              <i className="material-icons-outlined">{darkMode ? 'wb_sunny' : 'brightness_2'}</i>
             </button>
           </li>
           <li>

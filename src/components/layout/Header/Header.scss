@@ -16,8 +16,8 @@ nav {
     }
     .dark-mode {
       button {
-        height: 64px;
-        line-height: 64px;
+        height: inherit;
+        line-height: inherit;
         &:hover {
           background-color: rgba(0, 0, 0, 0.1);
         }
