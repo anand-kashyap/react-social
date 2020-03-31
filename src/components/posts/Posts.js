@@ -69,7 +69,7 @@ const Posts = props => {
             <CSSTransition
               key={post.id}
               timeout={500}
-            // classNames={scale && 'item'}
+              classNames="item"
             >
               <PostItem key={post.id} data={post} selectedDrop={v => onDropSel(v, post)} />
             </CSSTransition>
