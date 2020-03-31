@@ -47,7 +47,7 @@
   }
   .item-enter-done {
     background-color: var(--content-color);
-    transition: background-color 2s ease 1s;
+    transition: background-color 0.3s ease 0.2s;
   }
   .item-exit {
     opacity: 1;
