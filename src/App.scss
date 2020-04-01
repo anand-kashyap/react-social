@@ -1,6 +1,29 @@
+// ! use native css variables for instant repaint
+// light theme
+:root {
+  --base-color: #fd746c;
+  --base-color2: #fff;
+  --content-color: #fff;
+}
+// dark theme
+[data-theme='dark'] {
+  // font-weight: 500;
+  --base-color: #263238;
+  --base-color2: #455a64;
+  --content-color: #b0bec5;
+}
+
+body {
+  background-color: var(--base-color2);
+}
+
+html,
+body {
+  height: 100%;
+}
+
 .main-content {
   margin-top: 10px !important;
-  background-color: $test;
 }
 
 .flexed {
