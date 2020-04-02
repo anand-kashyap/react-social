@@ -2,19 +2,31 @@
 // light theme
 :root {
   --base-color: #fd746c;
-  --base-color2: #fff;
   --content-color: #fff;
+  --text-color: #000000de;
 }
 // dark theme
 [data-theme='dark'] {
-  // font-weight: 500;
-  --base-color: #263238;
-  --base-color2: #455a64;
-  --content-color: #b0bec5;
+  // --base-color: #393939;
+  --content-color: #2d2d2d;
+  .card {
+    border: 1px solid #4a4e51;
+    i,
+    p {
+      color: $textColorDark;
+    }
+    .card-action * {
+      color: $textColorDark !important;
+    }
+  }
+  .drop-item span,
+  .modal * {
+    color: $textColorDark;
+  }
 }
 
 body {
-  background-color: var(--base-color2);
+  background-color: var(--content-color);
 }
 
 html,
@@ -40,7 +52,7 @@ body {
     .dropdown-content {
       background-color: var(--content-color);
       li {
-        background-color: var(--base-color2);
+        background-color: var(--content-color);
         filter: brightness(1.45);
         &:hover {
           filter: brightness(1.25);
@@ -61,7 +73,8 @@ body {
   }
   .item-enter {
     opacity: 0;
-    background-color: #ccf9ff;
+    // background-color: #ccf9ff;
+    background-color: var(--base-color);
     transform: scale(1.1);
   }
   .item-enter-active {

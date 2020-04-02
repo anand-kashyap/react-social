@@ -1,5 +1,3 @@
-@import '../../../assets/themes/variables';
-
 nav {
   background-color: var(--base-color);
   a {
@@ -18,12 +16,13 @@ nav {
       button {
         height: inherit;
         line-height: inherit;
+        color: inherit;
         &:hover {
           background-color: rgba(0, 0, 0, 0.1);
         }
         i {
           transform: rotate(45deg);
-          color: var(--content-color);
+          // color: var(--text-color);
           line-height: inherit;
           height: inherit;
         }
