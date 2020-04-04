@@ -29,3 +29,16 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .modal.bottom-sheet {
+    @each $p in height, max-height, width {
+      #{$p}: 100%;
+    }
+    border-top-left-radius: unset;
+    border-top-right-radius: unset;
+    .modal-footer span {
+      display: none;
+    }
+  }
+}

@@ -5,8 +5,7 @@ import postContext from '../../../context/post/postContext';
 const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', opened = false, closed }) => {
   let modalRef = useRef(),
     isSaved = useRef(false);
-  const [isMobile, setMobile] = useState(false),
-    { addNew } = useContext(postContext),
+  const { addNew } = useContext(postContext),
     [text, setText] = useState(''),
     mainClass = bottom ? 'bottom-sheet' : null;
   const Post = () => {
@@ -31,7 +30,6 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
   options.dismissible = dismiss;
   useEffect(() => {
     M.Modal.init(modalRef, options);
-    setMobile(window.screen.width <= 600);
     return () => console.log('ran');
     // eslint-disable-next-line
   }, []);
@@ -40,8 +38,7 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
   }
 
   const textboxKeyPress = (e) => {
-    setMobile(window.screen.width <= 600);
-    if (isMobile) {
+    if (window.screen.width <= 600) {
       return;
     }
     const { keyCode: key, ctrlKey, shiftKey } = e;
@@ -70,7 +67,7 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
         <textarea onKeyDown={textboxKeyPress} ref={tref => tref && opened ? tref.focus() : null} placeholder="Share something..." value={text} onChange={setContent}></textarea>
       </div>
       <div className="modal-footer">
-        {!isMobile && <span><strong>Return</strong> to send. <strong>Shift + return</strong> to add new line</span>}
+        <span><strong>Return</strong> to send. <strong>Shift + return</strong> to add new line</span>
         <p onClick={() => setText('')} className="modal-close waves-effect waves-red btn-flat">
           Cancel
         </p>
