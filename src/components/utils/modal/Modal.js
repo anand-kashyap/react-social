@@ -15,7 +15,7 @@ const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', 
   };
   if (!options) {
     options = {
-      inDuration: 250,
+      inDuration: 350,
       outDuration: 350,
       onCloseEnd() {
         closed(isSaved.current)
