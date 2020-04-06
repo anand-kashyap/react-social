@@ -36,6 +36,26 @@ body {
 
 .main-content {
   margin-top: 10px !important;
+  @each $v in appear, enter {
+    .slide-up-#{$v} {
+      transform: translateY(200vh);
+      width: 85%;
+      position: fixed;
+    }
+    .slide-up-#{$v}-active {
+      transform: translateY(0);
+      transition: transform 0.7s;
+    }
+  }
+  .slide-up-exit {
+    transform: translateY(0);
+  }
+  .slide-up-exit-active {
+    transform: translateY(200vh);
+    width: 85%;
+    position: fixed;
+    transition: transform 0.5s;
+  }
 }
 
 .flexed {

@@ -5,9 +5,7 @@ const Post = ({ match }) => {
   console.log(match.params.id);
 
   return (
-    <div>
-      Post works
-    </div>
+    <div>Post works</div>
   )
 }
 

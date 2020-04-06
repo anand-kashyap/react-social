@@ -34,7 +34,7 @@ const PostItem = ({ data: { title, text, id, hasImage, imageUrl, createdBy, crea
       </div>
       <div className={actions + " card-action"}>
         <button className="waves-effect btn-flat">Like</button>
-        <Link className="waves-effect btn-flat" to={`/post/${id}`}>Comment</Link>
+        <Link className="waves-effect btn-flat" to={`/comments/${id}`}>Comment</Link>
         {/* <Link to="/">Share</Link> */}
       </div>
     </div>
