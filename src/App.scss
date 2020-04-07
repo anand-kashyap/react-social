@@ -37,21 +37,30 @@ body {
 .main-content {
   margin-top: 10px !important;
   @each $v in appear, enter {
-    .slide-up-#{$v} {
-      transform: translateY(200vh);
-      width: 85%;
-      position: fixed;
+    .slide-#{$v} {
+      transform: translate3d(-200%, 0, 0);
     }
-    .slide-up-#{$v}-active {
-      transform: translateY(0);
+    .slide-#{$v}-active {
+      transform: translate3d(0, 0, 0);
       transition: transform 0.7s;
     }
   }
-  .slide-up-exit {
-    transform: translateY(0);
+  .slide-exit-active {
+    transform: translate3d(-200%, 0, 0);
+    position: fixed;
+    transition: transform 0.5s;
+  }
+  @each $v in appear, enter {
+    .slide-up-#{$v} {
+      @include slideUpHide();
+    }
+    .slide-up-#{$v}-active {
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.7s;
+    }
   }
   .slide-up-exit-active {
-    transform: translateY(200vh);
+    transform: translate3d(0, 200vh, 0);
     width: 85%;
     position: fixed;
     transition: transform 0.5s;

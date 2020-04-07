@@ -1,3 +1,9 @@
 // !only declare mixins and sass variables here
 
 $textColorDark: #fff;
+
+@mixin slideUpHide() {
+  transform: translate3d(0, 200vh, 0);
+  width: 85%;
+  position: fixed;
+}
