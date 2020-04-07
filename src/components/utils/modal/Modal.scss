@@ -1,6 +1,7 @@
 .modal.bottom-sheet {
-  margin: inherit;
-  width: inherit;
+  margin-left: 15%;
+  width: 75%;
+
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   background-color: var(--content-color);
@@ -35,7 +36,8 @@
     @each $p in height, max-height {
       #{$p}: 70%;
     }
-    width: unset;
+    margin: inherit;
+    width: inherit;
     .modal-footer span {
       display: none;
     }
