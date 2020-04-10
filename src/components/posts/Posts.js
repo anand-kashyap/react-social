@@ -6,13 +6,14 @@ import PostItem from './postItem/PostItem';
 import './Posts.scss'
 import { M } from '../utils/Shared';
 import Modal from '../utils/modal/Modal';
-import postContext from '../../context/post/postContext';
+import postContext from 'context/post/postContext';
 
 const Posts = props => {
   const modalId = 'modal1',
     { posts, fetchNewPosts, deletePost } = useContext(postContext),
     [scale, setScale] = useState(''),
     [opened, setOpened] = useState(false);
+
   const onInit = (pull = false) => {
     if (!pull) {
       setScale('');
@@ -69,7 +70,7 @@ const Posts = props => {
             <CSSTransition
               key={post.id}
               timeout={500}
-              classNames="item"
+              classNames={scale && 'item'}
             >
               <PostItem key={post.id} data={post} selectedDrop={v => onDropSel(v, post)} />
             </CSSTransition>

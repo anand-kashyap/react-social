@@ -116,21 +116,10 @@ body {
     transition: background-color 0.3s ease 0.2s;
   }
   .item-exit {
-    opacity: 1;
+    // opacity: 1;
     background-color: red;
-    * {
-      visibility: hidden;
-    }
   }
   .item-exit-active {
-    opacity: 0;
-    transform: scaleY(0);
-    transition: transform 400ms, opacity 400ms;
-  }
-}
-
-#toast-container {
-  .created-toast {
-    // background-color: #64b3f4;
+    animation: scale-out-ver-top 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   }
 }

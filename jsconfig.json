@@ -1,5 +1,9 @@
 {
   "typeAcquisition": {
     "include": ["node", "react", "react-dom"]
-  }
+  },
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src"]
 }
