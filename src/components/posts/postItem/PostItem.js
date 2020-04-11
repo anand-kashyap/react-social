@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react'
+import DropDown from 'components/utils/dropdown/DropDown';
+import commentContext from 'context/comment/context';
+import PropTypes from 'prop-types';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types'
+import { actions, cardTitle, date, textCont } from './PostItem.module.scss';
 
-import { cardTitle, date, actions, textCont } from './PostItem.module.scss';
-import DropDown from '../../utils/dropdown/DropDown';
-const PostItem = ({ data: { title, text, id, hasImage, imageUrl, createdBy, createdAt }, selectedDrop }) => {
+const PostItem = ({ data: { text, id, hasImage, imageUrl, createdBy, createdAt }, selectedDrop }) => {
+  // eslint-disable-next-line
+  const { setInit } = useContext(commentContext);
   const dropOptions = [
     { val: 'one', icon: 'all_out' }, { val: 'delete', icon: 'delete' }];
   useEffect(() => {
@@ -20,8 +23,12 @@ const PostItem = ({ data: { title, text, id, hasImage, imageUrl, createdBy, crea
     }).format(d);
   };
 
+  /* const openCommentBox = () => {
+    console.log('open comments for post: ', id);
+    setInit(id);
+  }; */
+
   return (
-    // <div className="col s12">
     <div className="card hoverable">
       <DropDown id={id} dropOpts={dropOptions} selOpt={selectedDrop} />
       <div className="card-content">
@@ -32,13 +39,13 @@ const PostItem = ({ data: { title, text, id, hasImage, imageUrl, createdBy, crea
         </div>
         <p className={textCont}>{text}</p>
       </div>
-      <div className={actions + " card-action"}>
-        <button className="waves-effect btn-flat">Like</button>
-        <Link className="waves-effect btn-flat" to={`/comments/${id}`}>Comment</Link>
+      <div className={actions + ' card-action'}>
+        <button className='waves-effect btn-flat'>Like</button>
+        <Link to={`/comments/${id}`} className='waves-effect btn-flat'>Comment</Link>
+        {/* <button onClick={openCommentBox} className='waves-effect btn-flat'>Comment</button> */}
         {/* <Link to="/">Share</Link> */}
       </div>
     </div>
-    // </div>
   )
 }
 

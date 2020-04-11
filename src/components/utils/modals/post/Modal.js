@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useContext, useState } from 'react';
-import { M } from '../Shared';
+import { M } from 'components/utils/Shared';
 import './Modal.scss';
 import postContext from 'context/post/postContext';
-const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal1', opened = false, closed }) => {
+const Modal = ({ bottom = false, dismiss = true, options = null, id = 'modal01', opened = false, closed }) => {
   let modalRef = useRef(),
     isSaved = useRef(false);
   const { addNew } = useContext(postContext),

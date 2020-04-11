@@ -1,3 +1,7 @@
+# todo
+
+- need custom pull to refresh by hooks or rxjs
+
 # common
 
 - login

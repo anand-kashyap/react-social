@@ -5,11 +5,11 @@ import PullToRefresh from 'react-simple-pull-to-refresh';
 import PostItem from './postItem/PostItem';
 import './Posts.scss'
 import { M } from '../utils/Shared';
-import Modal from '../utils/modal/Modal';
+import Modal from '../utils/modals/post/Modal';
 import postContext from 'context/post/postContext';
 
 const Posts = props => {
-  const modalId = 'modal1',
+  const modalId = 'modal01',
     { posts, fetchNewPosts, deletePost } = useContext(postContext),
     [scale, setScale] = useState(''),
     [opened, setOpened] = useState(false);

@@ -1,5 +1,45 @@
-.com-box {
-  border-top: 2px solid red;
-  background-color: burlywood;
-  height: 400px;
+.card.comment-card {
+  background-color: var(--content-color);
+  .username {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #c4c8cc;
+    &:hover {
+      color: #e7e8eb;
+    }
+  }
+  .com-actions {
+    display: flex;
+    border-top: 1px solid;
+    margin-top: 10px;
+    div {
+      margin: 5px;
+    }
+    .date {
+      align-self: center;
+    }
+    .btn-flat {
+      color: var(--base-color);
+    }
+  }
+}
+
+.comments-parent {
+  display: flex;
+  box-sizing: border-box;
+  height: 85vh;
+  flex-direction: column;
+  .com-container {
+    overflow-y: auto;
+  }
+  .com-box {
+    input.add-comment {
+      height: inherit;
+      color: var(--text-color);
+      &:focus {
+        border-bottom: 1px solid var(--base-color);
+        box-shadow: 0 1px 0 0 var(--base-color);
+      }
+    }
+  }
 }
