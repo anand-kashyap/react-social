@@ -118,6 +118,6 @@ Modal.propTypes = {
   options: PropTypes.object,
   id: PropTypes.string,
   opened: PropTypes.bool,
-  closed: PropTypes.object,
+  closed: PropTypes.func.isRequired,
 };
 export default Modal;
