@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useContext, useState } from 'react';
+import PropTypes from 'prop-types';
+
 import { M } from 'components/utils/Shared';
 import './Modal.scss';
 import postContext from 'context/post/postContext';
@@ -110,4 +112,12 @@ const Modal = ({
   );
 };
 
+Modal.propTypes = {
+  bottom: PropTypes.bool,
+  dismiss: PropTypes.bool,
+  options: PropTypes.object,
+  id: PropTypes.string,
+  opened: PropTypes.bool,
+  closed: PropTypes.object,
+};
 export default Modal;
