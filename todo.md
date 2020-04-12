@@ -1,6 +1,7 @@
 # todo
 
 - need custom pull to refresh by hooks or rxjs
+- types interface for posts
 
 # common
 
