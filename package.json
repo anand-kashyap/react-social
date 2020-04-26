@@ -18,7 +18,8 @@
     "react-simple-pull-to-refresh": "^1.1.2",
     "react-transition-group": "^4.3.0",
     "sass-resources-loader": "^2.0.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "yup": "^0.28.4"
   },
   "scripts": {
     "dev": "react-app-rewired start",
@@ -45,6 +46,7 @@
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "@types/react-router-dom": "^5.1.4",
-    "@types/react-transition-group": "^4.2.4"
+    "@types/react-transition-group": "^4.2.4",
+    "@types/yup": "^0.28.0"
   }
 }

@@ -10,6 +10,7 @@ import PostState from 'context/post/postState';
 import CommentState from 'context/comment/state';
 import Trans from 'components/utils/Transit';
 import Comments from './posts/comments/Comments';
+import Register from './pages/register/Register';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Switch location={location}>
                   <Route exact path='/' component={Posts} />
                   <Route exact path='/login' component={Login} />
+                  <Route exact path='/register' component={Register} />
                   <Route exact path='/comments/:postId' component={Comments} />
                 </Switch>
               </Trans>

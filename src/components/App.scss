@@ -10,9 +10,7 @@
   // --base-color: #393939;
   --content-color: #2d2d2d;
   --text-color: #fff;
-  span {
-    color: $textColorDark;
-  }
+  color: $textColorDark;
   .card {
     border: 1px solid #4a4e51;
     i,
@@ -135,5 +133,27 @@ body {
   }
   .item-exit-active {
     animation: scale-out-ver-top 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  }
+}
+
+form {
+  margin-top: 30px;
+  .input-field {
+    margin-bottom: 1.2rem;
+    a {
+      color: #039be5 !important;
+    }
+    .err {
+      color: red;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  form {
+    button {
+      width: 100%;
+    }
   }
 }
