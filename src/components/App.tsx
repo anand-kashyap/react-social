@@ -3,9 +3,8 @@ import './App.scss';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Posts from './posts/Posts';
 
-// eslint-disable-next-line
-import { M } from 'components/utils/Shared';
-import Login from './pages/Login';
+import 'components/utils/Shared';
+import Login from './pages/login/Login';
 import Header from './layout/Header/Header';
 import PostState from 'context/post/postState';
 import CommentState from 'context/comment/state';

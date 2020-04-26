@@ -10,6 +10,9 @@
   // --base-color: #393939;
   --content-color: #2d2d2d;
   --text-color: #fff;
+  span {
+    color: $textColorDark;
+  }
   .card {
     border: 1px solid #4a4e51;
     i,
@@ -37,6 +40,16 @@ body {
 
 .main-content {
   margin-top: 10px !important;
+  .custom-btn {
+    background-color: var(--base-color);
+    &:hover {
+      background-color: rgb(255, 147, 142);
+    }
+  }
+  /* input:focus {
+    border-bottom: 1px solid var(--base-color) !important;
+    box-shadow: 0 1px 0 0 var(--base-color) !important;
+  } */
   @each $v in appear, enter {
     .slide-#{$v} {
       transform: translate3d(-200%, 0, 0);

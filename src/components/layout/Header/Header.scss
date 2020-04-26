@@ -28,5 +28,13 @@ nav {
         }
       }
     }
+    .login-link {
+      a {
+        .material-icons-outlined {
+          line-height: inherit;
+          height: inherit;
+        }
+      }
+    }
   }
 }
