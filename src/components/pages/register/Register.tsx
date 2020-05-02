@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object, ref } from 'yup';
+import axios from 'axios';
 
 import './Register.scss';
 import { Link } from 'react-router-dom';
@@ -20,11 +21,12 @@ const Register = () => {
     });
   };
 
-  const onSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+  const onSubmit = async (values, { setSubmitting }) => {
+    const res = await axios
+      .post('http://localhost:2000/user/register', values)
+      .catch((e) => console.error(e.response.data.message));
+    console.log(values, res);
+    setSubmitting(false);
   };
   return (
     <Formik
