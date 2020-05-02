@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Register = () => {
   const validateFields = () => {
     return object().shape({
-      email: string().required(),
+      email: string().required().email(),
       password: string().required().min(4),
       name: string().required().min(3),
       confirmPassword: string()

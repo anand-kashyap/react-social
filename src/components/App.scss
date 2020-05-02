@@ -138,11 +138,11 @@ body {
 
 form {
   margin-top: 30px;
+  a {
+    color: #039be5 !important;
+  }
   .input-field {
     margin-bottom: 1.2rem;
-    a {
-      color: #039be5 !important;
-    }
     .err {
       color: red;
       font-size: 0.9rem;

@@ -2,14 +2,13 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object } from 'yup';
 
-import './Login.scss';
+import './ForgotPass.scss';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const ForgotPass = () => {
   const validateFields = () =>
     object().shape({
       email: string().required().email(),
-      password: string().required().min(4),
     });
   const onSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
@@ -20,44 +19,33 @@ const Login = () => {
   return (
     <div>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: '' }}
         validationSchema={validateFields}
         onSubmit={onSubmit}
       >
         {({ isSubmitting }) => (
-          <Form className='login-form'>
+          <Form className='forgot-form'>
             <div className='input-field'>
-              <Field type='email' id='email' name='email' />
-              <label htmlFor='email'>Email</label>
+              <Field type='email' id='femail' name='email' />
+              <label htmlFor='femail'>Email</label>
               <ErrorMessage name='email' component='div' className='err' />
-            </div>
-            <div className='input-field'>
-              <Field type='password' id='pass' name='password' />
-              <label htmlFor='pass'>Password</label>
-              <ErrorMessage name='password' component='div' className='err' />
             </div>
             <button
               type='submit'
               className='btn waves-effect waves-light custom-btn'
               disabled={isSubmitting}
             >
-              Login
+              Submit
             </button>
-            <Link
-              className='btn-flat waves-effect waves-light'
-              to='/forgot-password'
-            >
-              Forgot Password?
-            </Link>
           </Form>
         )}
       </Formik>
       <div className='signup'>
-        <span>New user? </span>
-        <Link to='/register'>Sign up</Link>
+        <span>Back to Login </span>
+        <Link to='/login'>Login</Link>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default ForgotPass;
