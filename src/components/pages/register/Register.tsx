@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object, ref } from 'yup';
 import axios from 'axios';
 
 import './Register.scss';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Register = () => {
+  const hasErr = useRef(false);
+  const history = useHistory();
+  const regRef: any = useRef();
   const validateFields = () => {
     return object().shape({
       email: string().required().email(),
@@ -22,10 +25,18 @@ const Register = () => {
   };
 
   const onSubmit = async (values, { setSubmitting }) => {
-    const res = await axios
+    hasErr.current = false;
+    await axios
       .post('http://localhost:2000/user/register', values)
-      .catch((e) => console.error(e.response.data.message));
-    console.log(values, res);
+      .catch((e) => {
+        console.error(e.response.data.message);
+        hasErr.current = true;
+      });
+    if (!hasErr.current) {
+      regRef.current.reset();
+      history.push('/login');
+    }
+    // console.log(regRef, res);
     setSubmitting(false);
   };
   return (
@@ -35,7 +46,7 @@ const Register = () => {
       onSubmit={onSubmit}
     >
       {({ isSubmitting }) => (
-        <Form className='register-form'>
+        <Form ref={regRef} className='register-form'>
           <div className='input-field'>
             <Field type='text' id='name' name='name' />
             <label htmlFor='name'>Name</label>
@@ -60,6 +71,9 @@ const Register = () => {
               className='err'
             />
           </div>
+          {hasErr.current && (
+            <div className='server-err'>Error registering user</div>
+          )}
           <button
             type='submit'
             className='btn waves-effect waves-light custom-btn'
