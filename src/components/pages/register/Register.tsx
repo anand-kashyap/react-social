@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object, ref } from 'yup';
-import axios from 'axios';
+import axios from 'utils/api';
 
 import './Register.scss';
 import { Link, useHistory } from 'react-router-dom';
@@ -29,7 +29,6 @@ const Register = () => {
     await axios
       .post('http://localhost:2000/user/register', values)
       .catch((e) => {
-        console.error(e.response.data.message);
         hasErr.current = true;
       });
     if (!hasErr.current) {

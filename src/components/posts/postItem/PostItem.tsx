@@ -1,4 +1,4 @@
-import DropDown from 'components/utils/dropdown/DropDown';
+import DropDown from 'utils/dropdown/DropDown';
 import commentContext from 'context/comment/context';
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';

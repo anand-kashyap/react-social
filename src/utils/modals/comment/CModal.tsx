@@ -1,4 +1,4 @@
-import { M } from 'components/utils/Shared';
+import { M } from 'utils/Shared';
 import CommentContext from 'context/comment/context';
 import React, { useContext, useEffect, useRef } from 'react';
 import './CModal.scss';

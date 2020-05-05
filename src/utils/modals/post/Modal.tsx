@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { M } from 'components/utils/Shared';
+import { M } from 'utils/Shared';
 import './Modal.scss';
 import postContext from 'context/post/postContext';
 interface ModalOpts {
