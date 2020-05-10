@@ -15,7 +15,7 @@ const Login = () => {
     });
   const onSubmit = (values, { setSubmitting }) => {
     axios
-      .post('http://localhost:2000/user/login', values)
+      .post('/user/login', values)
       .then(
         (res) => {
           console.log('from login');

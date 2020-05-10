@@ -27,7 +27,7 @@ const Register = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     hasErr.current = false;
     await axios
-      .post('http://localhost:2000/user/register', values)
+      .post('/user/register', values)
       .catch((e) => {
         hasErr.current = true;
       });
