@@ -1,7 +1,6 @@
 import DropDown from 'utils/dropdown/DropDown';
-import commentContext from 'context/comment/context';
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 const {
   actions,
@@ -14,8 +13,6 @@ const PostItem = ({
   data: { text, id, imageUrl, createdBy, createdAt },
   selectedDrop,
 }: any) => {
-  // eslint-disable-next-line
-  const { setInit } = useContext(commentContext);
   const dropOptions = [
     { val: 'one', icon: 'all_out' },
     { val: 'delete', icon: 'delete' },

@@ -2,7 +2,7 @@ import React, { useReducer } from 'react'
 
 import PostContext from './postContext';
 import PostReducer from './postReducer';
-import posts from '../../mockData/posts';
+import posts from 'mockData/posts';
 
 import { ADD_POST, NEW_POSTS, DELETE_POST } from '../types';
 const PostState = props => {

@@ -4,13 +4,13 @@ import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PullToRefresh from 'react-simple-pull-to-refresh';
 import PostItem from './postItem/PostItem';
 import './Posts.scss';
-import { M } from '../../utils/Shared';
+import { M } from 'utils/Shared';
 import Modal from 'utils/modals/post/Modal';
 import postContext from 'context/post/postContext';
 
 const Posts = () => {
   const modalId = 'modal01',
-    { posts, fetchNewPosts, deletePost } = useContext(postContext),
+    { posts = [], fetchNewPosts, deletePost } = useContext(postContext),
     [scale, setScale] = useState(''),
     [opened, setOpened] = useState(false);
 

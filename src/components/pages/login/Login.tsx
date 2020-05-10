@@ -3,19 +3,31 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object } from 'yup';
 
 import './Login.scss';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'utils/api';
 
 const Login = () => {
+  const history = useHistory();
   const validateFields = () =>
     object().shape({
       email: string().required().email(),
       password: string().required().min(4),
     });
   const onSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+    axios
+      .post('http://localhost:2000/user/login', values)
+      .then(
+        (res) => {
+          console.log('from login');
+          history.push('/');
+        }
+      )
+      .catch((e) => {
+        console.error(e);
+      }).finally(
+        () => setSubmitting(false)
+      );
+
   };
   return (
     <div>

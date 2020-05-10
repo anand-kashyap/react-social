@@ -7,9 +7,9 @@ import './Register.scss';
 import { Link, useHistory } from 'react-router-dom';
 
 const Register = () => {
-  const hasErr = useRef(false);
-  const history = useHistory();
-  const regRef: any = useRef();
+  const hasErr = useRef(false),
+    history = useHistory(),
+    regRef: any = useRef();
   const validateFields = () => {
     return object().shape({
       email: string().required().email(),
