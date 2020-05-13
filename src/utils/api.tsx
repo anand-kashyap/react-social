@@ -5,7 +5,7 @@ import { history } from 'components/App';
 const salt = '$2b$10$HwNikNajaE.2Hwf47wJ1i.',
   ls = localStorage;
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'https://snappyapi.herokuapp.com' : 'http://localhost:2000';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' && !process.env.AWS ? 'https://snappyapi.herokuapp.com' : 'http://localhost:2000';
 
 // * adding interceptors
 //* for adding token
