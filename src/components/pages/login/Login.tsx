@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object } from 'yup';
 
@@ -8,6 +8,9 @@ import axios from 'utils/api';
 
 const Login = () => {
   const history = useHistory();
+  useEffect(() => {
+    console.log(process.env.NODE_ENV);
+  }, []);
   const validateFields = () =>
     object().shape({
       email: string().required().email(),
