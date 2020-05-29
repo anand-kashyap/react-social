@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import authContext from 'context/auth/authContext';
 
 import './Header.scss';
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(true);
-  useEffect(() => {}, []);
+  const [darkMode, setDarkMode] = useState(true),
+    hist = useHistory(),
+    { isAuth, deleteToken } = useContext(authContext);
+  // useEffect(() => {}, []);
 
   useEffect(() => {
     if (darkMode) {
@@ -14,6 +17,10 @@ const Header = () => {
     }
   }, [darkMode]);
 
+  const logOut = () => {
+    deleteToken();
+    hist.push('/login');
+  }
   return (
     <nav>
       <div className='nav-wrapper'>
@@ -31,11 +38,18 @@ const Header = () => {
               </i>
             </button>
           </li>
-          <li className='login-link'>
-            <Link to='/login'>
-              <i className='material-icons-outlined small'>perm_identity</i>
-            </Link>
+          {isAuth ? <li className='logout-link'>
+            <button
+              className='btn btn-small waves-effect btn-flat'
+              onClick={logOut}
+            ><i className='material-icons-outlined'>exit_to_app</i>
+            </button>
           </li>
+            : <li className='login-link'>
+              <Link to='/login'>
+                <i className='material-icons-outlined small'>perm_identity</i>
+              </Link>
+            </li>}
         </ul>
       </div>
     </nav>

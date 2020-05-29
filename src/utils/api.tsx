@@ -1,9 +1,7 @@
 import axios from 'axios';
-import { verify } from 'jsonwebtoken';
 import { history } from 'components/App';
 
-const salt = process.env.REACT_APP_SALT,
-  ls = localStorage;
+const ls = localStorage;
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'https://jsclub.dev/api' : 'http://localhost:2000/api';
 
@@ -24,13 +22,6 @@ axios.interceptors.request.use(
 //! error handler
 axios.interceptors.response.use(
   (res) => {
-    const { data: { token } } = res;
-    if (token) { // if login
-      // console.log('from api', salt);
-      const payload = verify(token, salt as string);
-      ls.setItem('snappyToken', token);
-      ls.setItem('snappyUser', JSON.stringify(payload));
-    }
 
     return res;
   },

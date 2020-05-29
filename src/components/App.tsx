@@ -7,6 +7,7 @@ import Posts from './posts/Posts';
 import 'utils/Shared';
 import Login from './pages/login/Login';
 import Header from './layout/Header/Header';
+import AuthState from 'context/auth/authState';
 import PostState from 'context/post/postState';
 import CommentState from 'context/comment/state';
 import Trans from 'utils/Transit';
@@ -16,8 +17,8 @@ import ForgotPass from './pages/forgot-password/ForgotPass';
 
 export const history = createBrowserHistory();
 
-function App() {
-  return (
+const App = () => (
+  <AuthState>
     <PostState>
       <CommentState>
         <Router history={history}>
@@ -42,7 +43,7 @@ function App() {
         </Router>
       </CommentState>
     </PostState>
-  );
-}
+  </AuthState>
+);
 
 export default App;

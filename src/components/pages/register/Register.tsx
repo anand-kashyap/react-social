@@ -52,13 +52,13 @@ const Register = () => {
             <ErrorMessage name='name' component='div' className='err' />
           </div>
           <div className='input-field'>
-            <Field type='email' id='email' name='email' />
-            <label htmlFor='email'>Email</label>
+            <Field type='email' id='remail' name='email' />
+            <label htmlFor='remail'>Email</label>
             <ErrorMessage name='email' component='div' className='err' />
           </div>
           <div className='input-field'>
-            <Field type='password' id='pass' name='password' />
-            <label htmlFor='pass'>Password</label>
+            <Field type='password' id='rpass' name='password' />
+            <label htmlFor='rpass'>Password</label>
             <ErrorMessage name='password' component='div' className='err' />
           </div>
           <div className='input-field'>

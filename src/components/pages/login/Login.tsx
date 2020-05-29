@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object } from 'yup';
+import { verify } from 'jsonwebtoken';
+import authContext from 'context/auth/authContext';
 
 import './Login.scss';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'utils/api';
-
+const salt = process.env.REACT_APP_SALT,
+  ls = localStorage;
 const Login = () => {
   const history = useHistory();
+  const { setToken } = useContext(authContext);
   useEffect(() => {
     console.log(process.env.NODE_ENV);
   }, []);
@@ -22,6 +26,13 @@ const Login = () => {
       .then(
         (res) => {
           console.log('from login');
+          const { data: { token } } = res;
+          if (token) { // if login
+            // console.log('from api', salt);
+            const payload = verify(token, salt as string);
+            setToken(token);
+            ls.setItem('snappyUser', JSON.stringify(payload));
+          }
           history.push('/');
         }
       )

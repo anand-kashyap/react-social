@@ -5,6 +5,7 @@ import PullToRefresh from 'react-simple-pull-to-refresh';
 import PostItem from './postItem/PostItem';
 import './Posts.scss';
 import { M } from 'utils/Shared';
+import withAuth from 'utils/auth/withAuth';
 import Modal from 'utils/modals/post/Modal';
 import postContext from 'context/post/postContext';
 
@@ -104,4 +105,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default withAuth(Posts);
