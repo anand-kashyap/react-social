@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component should take a snapshot 1`] = `
+<DocumentFragment>
+  <nav>
+    <div
+      class="nav-wrapper"
+    >
+      <a
+        class="heading"
+        href="/"
+      >
+        SnappyLog
+      </a>
+      <ul
+        class="right"
+        id="nav-mobile"
+      >
+        <li
+          class="dark-mode"
+        >
+          <button
+            class="btn btn-small waves-effect btn-flat"
+            data-testid="dark-mode-btn"
+          >
+            <i
+              class="material-icons-outlined"
+              data-testid="dark-mode"
+            >
+              wb_sunny
+            </i>
+          </button>
+        </li>
+        <li
+          class="login-link"
+          data-testid="login"
+        >
+          <a
+            href="/login"
+          >
+            <i
+              class="material-icons-outlined small"
+            >
+              perm_identity
+            </i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</DocumentFragment>
+`;

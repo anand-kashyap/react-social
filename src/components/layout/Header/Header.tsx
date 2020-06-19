@@ -29,23 +29,23 @@ const Header = () => {
         </Link>
         <ul id='nav-mobile' className='right'>
           <li className='dark-mode'>
-            <button
+            <button data-testid='dark-mode-btn'
               className='btn btn-small waves-effect btn-flat'
               onClick={() => setDarkMode(!darkMode)}
             >
-              <i className='material-icons-outlined'>
+              <i data-testid='dark-mode' className='material-icons-outlined'>
                 {darkMode ? 'wb_sunny' : 'brightness_2'}
               </i>
             </button>
           </li>
-          {isAuth ? <li className='logout-link'>
+          {isAuth ? <li data-testid='logout' className='logout-link'>
             <button
               className='btn btn-small waves-effect btn-flat'
               onClick={logOut}
             ><i className='material-icons-outlined'>exit_to_app</i>
             </button>
           </li>
-            : <li className='login-link'>
+            : <li className='login-link' data-testid='login'>
               <Link to='/login'>
                 <i className='material-icons-outlined small'>perm_identity</i>
               </Link>
