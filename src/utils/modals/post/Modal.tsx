@@ -30,7 +30,7 @@ const Modal = ({
     addNew(text, 'test_user');
     setText('');
   };
-  if (!options) {
+  if (!Object.keys(options).length) {
     options = {
       inDuration: 350,
       outDuration: 350,

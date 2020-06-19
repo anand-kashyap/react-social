@@ -31,11 +31,11 @@ const App = () => (
                 {...location.state}
               >
                 <Switch location={location}>
-                  <Route exact path='/' component={Posts} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/forgot-password' component={ForgotPass} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/comments/:postId' component={Comments} />
+                  <Route exact path='/' component={Posts} />
                 </Switch>
               </Trans>
             )}
