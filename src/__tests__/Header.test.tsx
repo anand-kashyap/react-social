@@ -1,4 +1,5 @@
 import React from 'react'
+// import { toBeInTheDocument } from '@testing-library/jest-dom';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react'
 import { Router } from 'react-router-dom'
 import Header from 'components/layout/Header/Header';
@@ -18,6 +19,7 @@ const renderHeader = (props = {}, isAuth = false) => {
 
 describe('Header Component', () => {
   afterEach(cleanup);
+  // expect.extend({ toBeInTheDocument });
 
   it('should take a snapshot', () => {
     const { asFragment } = renderHeader();
@@ -50,16 +52,16 @@ describe('Header Component', () => {
     const { getByTestId } = renderHeader(),
       loginLink = getByTestId('login'),
       logOutLink = screen.queryByTestId('logout');
-    expect(loginLink).toBeTruthy();
-    expect(logOutLink).toBeFalsy();
+    expect(loginLink).toBeInTheDocument();
+    expect(logOutLink).not.toBeInTheDocument();
   });
 
   it('should show logout link if user is logged in', () => {
     const { getByTestId } = renderHeader({}, true),
       loginLink = screen.queryByTestId('login'),
       logOutLink = getByTestId('logout');
-    expect(logOutLink).toBeTruthy();
-    expect(loginLink).toBeFalsy();
+    expect(logOutLink).toBeInTheDocument();
+    expect(loginLink).not.toBeInTheDocument();
   });
 
 });

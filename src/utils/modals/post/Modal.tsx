@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { M } from 'utils/Shared';
 import './Modal.scss';
 import postContext from 'context/post/postContext';
+
 interface ModalOpts {
   bottom?: boolean;
   dismiss?: boolean;
@@ -34,20 +35,21 @@ const Modal = ({
     options = {
       inDuration: 350,
       outDuration: 350,
-      onCloseEnd() {
-        closed(isSaved.current);
-        isSaved.current = false;
-        // console.log('close End');
-      },
       opacity: 0.5,
       startingTop: '4%',
       endingTop: '10%',
     };
   }
+  options.onCloseEnd = () => {
+    closed(isSaved.current);
+    isSaved.current = false;
+  };
   options.dismissible = dismiss;
   useEffect(() => {
     M.Modal.init(modalRef, options);
-    return () => console.log('ran');
+    return () => {
+      // console.log('ran')
+    };
     // eslint-disable-next-line
   }, []);
   const setContent = (e) => {
@@ -83,6 +85,7 @@ const Modal = ({
       <div className='modal-content'>
         <h5>Create Post</h5>
         <textarea
+          data-testid='textarea'
           onKeyDown={textboxKeyPress}
           ref={(tref) => (tref && opened ? tref.focus() : null)}
           placeholder='Share something...'

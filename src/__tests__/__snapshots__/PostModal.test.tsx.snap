@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post Modal Component should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="modal null"
+    id="modal01"
+    tabindex="0"
+  >
+    <div
+      class="modal-content"
+    >
+      <h5>
+        Create Post
+      </h5>
+      <textarea
+        data-testid="textarea"
+        placeholder="Share something..."
+      />
+    </div>
+    <div
+      class="modal-footer"
+    >
+      <span>
+        <strong>
+          Return
+        </strong>
+         to send. 
+        <strong>
+          Shift + return
+        </strong>
+         to add new line
+      </span>
+      <p
+        class="modal-close waves-effect waves-red btn-flat"
+      >
+        Cancel
+      </p>
+      <p
+        class="modal-close waves-effect waves-light btn red"
+      >
+        Post
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
