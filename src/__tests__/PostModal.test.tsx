@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, cleanup, fireEvent, screen } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 import PostModal from 'utils/modals/post/Modal';
 
 const renderPModal = (opened = false, closed = () => { }) => {

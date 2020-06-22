@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown Component should take a snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="dropdown-trigger btn-flat more-details"
+    data-target="dropdowntest1"
+    data-testid="drop-btn"
+  >
+    <i
+      class="material-icons-outlined"
+    >
+      more_horiz
+    </i>
+  </button>
+  <ul
+    class="dropdown-content"
+    data-testid="drop-contain"
+    id="dropdowntest1"
+    tabindex="0"
+  >
+    <li
+      tabindex="0"
+    >
+      <button
+        class="drop-item"
+        data-testid="one"
+      >
+        <i
+          class="material-icons-outlined"
+        >
+          all_out
+        </i>
+         
+        <span>
+          one
+        </span>
+      </button>
+    </li>
+    <li
+      tabindex="0"
+    >
+      <button
+        class="drop-item"
+        data-testid="delete"
+      >
+        <i
+          class="material-icons-outlined"
+        >
+          delete
+        </i>
+         
+        <span>
+          delete
+        </span>
+      </button>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
