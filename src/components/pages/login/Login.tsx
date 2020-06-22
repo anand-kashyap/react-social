@@ -44,7 +44,7 @@ const Login = () => {
 
   };
   return (
-    <div>
+    <>
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={validateFields}
@@ -53,13 +53,13 @@ const Login = () => {
         {({ isSubmitting }) => (
           <Form className='login-form'>
             <div className='input-field'>
-              <Field type='email' id='email' name='email' />
-              <label htmlFor='email'>Email</label>
+              <Field type='email' name='email' />
+              <label>Email</label>
               <ErrorMessage name='email' component='div' className='err' />
             </div>
             <div className='input-field'>
-              <Field type='password' id='pass' name='password' />
-              <label htmlFor='pass'>Password</label>
+              <Field type='password' name='password' />
+              <label>Password</label>
               <ErrorMessage name='password' component='div' className='err' />
             </div>
             <button
@@ -82,7 +82,7 @@ const Login = () => {
         <span>New user? </span>
         <Link to='/register'>Sign up</Link>
       </div>
-    </div>
+    </>
   );
 };
 

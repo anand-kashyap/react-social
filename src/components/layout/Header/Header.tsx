@@ -4,10 +4,9 @@ import authContext from 'context/auth/authContext';
 
 import './Header.scss';
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(true),
+  const [darkMode, setDarkMode] = useState(false),
     hist = useHistory(),
     { isAuth, deleteToken } = useContext(authContext);
-  // useEffect(() => {}, []);
 
   useEffect(() => {
     if (darkMode) {
@@ -16,6 +15,10 @@ const Header = () => {
       document.body.removeAttribute('data-theme');
     }
   }, [darkMode]);
+
+  useEffect(() => {
+    setDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }, []);
 
   const logOut = () => {
     deleteToken();
