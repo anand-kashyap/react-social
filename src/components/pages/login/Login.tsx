@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object } from 'yup';
 import { verify } from 'jsonwebtoken';
@@ -7,11 +7,13 @@ import authContext from 'context/auth/authContext';
 import './Login.scss';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'utils/api';
+import Spinner from 'utils/Spinner';
 const salt = process.env.REACT_APP_SALT,
   ls = localStorage;
 const Login = () => {
   const history = useHistory();
   const { setToken } = useContext(authContext);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     console.log(process.env.NODE_ENV);
   }, []);
@@ -21,6 +23,7 @@ const Login = () => {
       password: string().required().min(4),
     });
   const onSubmit = (values, { setSubmitting }) => {
+    setLoading(true);
     axios
       .post('/user/login', values)
       .then(
@@ -39,7 +42,10 @@ const Login = () => {
       .catch((e) => {
         console.error(e);
       }).finally(
-        () => setSubmitting(false)
+        () => {
+          setSubmitting(false);
+          setLoading(false);
+        }
       );
 
   };
@@ -62,13 +68,14 @@ const Login = () => {
               <label>Password</label>
               <ErrorMessage name='password' component='div' className='err' />
             </div>
-            <button
+            <Spinner active={loading} />
+            {!loading && <button
               type='submit'
               className='btn waves-effect waves-light custom-btn'
               disabled={isSubmitting}
             >
               Login
-            </button>
+            </button>}
             <Link
               className='btn-flat waves-effect waves-light'
               to='/forgot-password'

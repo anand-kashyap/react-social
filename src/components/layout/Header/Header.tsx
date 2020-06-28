@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <nav>
       <div className='nav-wrapper'>
-        <Link to='/' className='heading'>
+        <Link to={isAuth ? '/' : '/login'} className='heading'>
           SnappyLog
         </Link>
         <ul id='nav-mobile' className='right'>

@@ -24,21 +24,19 @@ const App = () => (
         <Router history={history}>
           <Header />
           <Route
-            render={({ location }) => (
-              <Trans
-                pageKey={location.key}
-                path={location.pathname}
-                {...location.state}
-              >
-                <Switch location={location}>
-                  <Route exact path='/login' component={Login} />
-                  <Route exact path='/forgot-password' component={ForgotPass} />
-                  <Route exact path='/register' component={Register} />
-                  <Route exact path='/comments/:postId' component={Comments} />
-                  <Route exact path='/' component={Posts} />
-                </Switch>
-              </Trans>
-            )}
+            render={({ location }) => <Trans
+              path={location.pathname}
+              {...location.state}
+            >
+              <Switch location={location}>
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/forgot-password' component={ForgotPass} />
+                <Route exact path='/register' component={Register} />
+                <Route exact path='/comments/:postId' component={Comments} />
+                <Route exact path='/' component={Posts} />
+              </Switch>
+            </Trans>
+            }
           />
         </Router>
       </CommentState>
