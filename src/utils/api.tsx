@@ -3,7 +3,7 @@ import { history } from 'components/App';
 
 const ls = localStorage;
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'https://jsclub.dev/api' : 'http://localhost:2000/api';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'https://snappy-gql.jsclub.dev/.netlify/functions/graphql' : 'http://localhost:2000/api';
 
 // * adding interceptors
 //* for adding token

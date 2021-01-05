@@ -1,13 +1,13 @@
-import React, { Fragment, useState, useEffect, useContext } from 'react';
+import postContext from 'context/post/postContext';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
+import PullToRefresh from 'react-simple-pull-to-refresh';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
-import PullToRefresh from 'react-simple-pull-to-refresh';
-import PostItem from './postItem/PostItem';
-import './Posts.scss';
-import { M } from 'utils/Shared';
 import withAuth from 'utils/auth/withAuth';
 import Modal from 'utils/modals/post/Modal';
-import postContext from 'context/post/postContext';
+import { M } from 'utils/Shared';
+import PostItem from './postItem/PostItem';
+import './Posts.scss';
 
 const Posts = () => {
   const modalId = 'modal01',
@@ -22,7 +22,7 @@ const Posts = () => {
         setScale('scale-in');
       }, 650);
     }
-    fetchNewPosts();
+    return fetchNewPosts();
   };
   useEffect(onInit, []);
 

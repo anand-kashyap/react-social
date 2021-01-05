@@ -1,53 +1,47 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { string, object } from 'yup';
-import { verify } from 'jsonwebtoken';
+import { gql, useMutation } from '@apollo/client';
 import authContext from 'context/auth/authContext';
-
-import './Login.scss';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { verify } from 'jsonwebtoken';
+import React, { useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import axios from 'utils/api';
 import Spinner from 'utils/Spinner';
+import { object, string } from 'yup';
+import './Login.scss';
+
 const salt = process.env.REACT_APP_SALT,
   ls = localStorage;
 const Login = () => {
-  const history = useHistory();
-  const { setToken } = useContext(authContext);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    console.log(process.env.NODE_ENV);
-  }, []);
+  const history = useHistory(),
+    { setToken } = useContext(authContext),
+    [loading, setLoading] = useState(false),
+    AUTH = gql`
+      mutation ($email: String!, $password: String!) {
+          authenticate(email: $email, password: $password)
+      }
+    `;
+  const [auth] = useMutation(AUTH);
+
   const validateFields = () =>
     object().shape({
       email: string().required().email(),
       password: string().required().min(4),
     });
-  const onSubmit = (values, { setSubmitting }) => {
-    setLoading(true);
-    axios
-      .post('/user/login', values)
-      .then(
-        (res) => {
-          console.log('from login');
-          const { data: { token } } = res;
-          if (token) { // if login
-            // console.log('from api', salt);
-            const payload = verify(token, salt as string);
-            setToken(token);
-            ls.setItem('snappyUser', JSON.stringify(payload));
-          }
-          history.push('/');
-        }
-      )
-      .catch((e) => {
-        console.error(e);
-      }).finally(
-        () => {
-          setSubmitting(false);
-          setLoading(false);
-        }
-      );
 
+  const onSubmit = (values, { setSubmitting }) => {
+    console.log('onSubmit -> values', values)
+    setLoading(true);
+    auth({ variables: values }).then(({ data: { authenticate: token } }) => {
+      if (!token) {
+        return;
+      }
+      const payload = verify(token, salt as string);
+      setToken(token);
+      ls.setItem('snappyUser', JSON.stringify(payload));
+      history.push('/');
+    }).finally(() => {
+      setSubmitting(false);
+      setLoading(false);
+    });
   };
   return (
     <>
