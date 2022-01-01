@@ -3,30 +3,30 @@ import { history } from 'components/App';
 
 const ls = localStorage;
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'https://jsclub.dev/api' : 'http://localhost:2000/api';
+axios.defaults.baseURL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://snappy-api.anandkashyap.in/api'
+    : 'http://localhost:2000/api';
 
 // * adding interceptors
 //* for adding token
-axios.interceptors.request.use(
-  req => {
-    console.log('from interce: ', req);
-    const token = ls.getItem('snappyToken');
-    if (token) {
-      // add auth token
-      req.headers.Authorization = token;
-    }
-    return req;
+axios.interceptors.request.use((req) => {
+  console.log('from interce: ', req);
+  const token = ls.getItem('snappyToken');
+  if (token) {
+    // add auth token
+    req.headers.Authorization = token;
   }
-)
+  return req;
+});
 
 //! error handler
 axios.interceptors.response.use(
   (res) => {
-
     return res;
   },
-  e => {
-    const { status, data, } = e.response;
+  (e) => {
+    const { status, data } = e.response;
     if (status === 401 && ls.getItem('snappyToken')) {
       console.log('cleared user');
       ls.removeItem('snappyToken');
@@ -38,6 +38,6 @@ axios.interceptors.response.use(
 
     return Promise.reject(e);
   }
-)
+);
 
 export default axios;
